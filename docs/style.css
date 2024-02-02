@@ -41,7 +41,7 @@ body {
 
 .container {
     background-color: #337CFF;
-
+    position: relative;
     flex-basis: 600px;
     width: 1200px;
     box-shadow: 12px 14px 23px -9px black;
@@ -65,18 +65,13 @@ body {
     align-self: flex-start;
     display: flex;
     gap: 5px;
-    display: flex;
     justify-content: space-between;
     align-items: center;
     width: 1190px;
     background-color: transparent;
 }
 
-input::placeholder {
-    color: #ffffff;
-    font-family: 'Kanit', sans-serif;
-    padding-left: 5px;
-}
+
 
 
 .task-input {
@@ -89,10 +84,20 @@ input::placeholder {
     caret-color: rgb(7, 7, 7);
     cursor: pointer;
     font-size: 15px;
+    /* caret-shape: block; */
+    caret-color: rgb(255, 255, 255);
 
 
 
 }
+
+
+.task-input::placeholder {
+    color: #ffffff;
+    font-family: 'Kanit', sans-serif;
+    padding-left: 5px;
+}
+
 
 
 .clear-btn,
@@ -176,7 +181,7 @@ input::placeholder {
 
 .tasks-styling {
     font-weight: bold;
-    font-family: 'Kanit', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     color: white;
     height: 30px;
     background-color: #262b26;
@@ -211,66 +216,18 @@ input::placeholder {
 
 }
 
-/* 
-.toggle-container {
-    display: flex;
-    align-items: center;
-  }
 
-  .toggle-label {
-    margin-right: 10px;
-  }
-
-  .toggle-switch {
-    position: relative;
-    display: inline-block;
-    width: 40px;
-    height: 20px;
-  }
-
-  .toggle-slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: .4s;
-    border-radius: 20px;
-  }
-
-  .toggle-slider:before {
-    position: absolute;
-    content: "";
-    height: 16px;
-    width: 16px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    transition: .4s;
-    border-radius: 50%;
-  }
-
-  input[type="checkbox"] {
-    display: none;
-  }
-
-  input[type="checkbox"]:checked + .toggle-slider {
-    background-color: #2196F3;
-  }
-
-  input[type="checkbox"]:checked + .toggle-slider:before {
-    transform: translateX(20px);
-  } */
 
 .checked-checkbox-styling {
     text-decoration: line-through;
+    text-decoration-thickness: 2.5px;
+    text-decoration-color: rgb(255, 255, 255);
+
 }
 
 .remove-Selection-Button {
-    width: 30px;
-    height: 30px;
+    width: 35px;
+    height: 35px;
     outline: none;
     cursor: pointer;
     font-weight: bolder;
@@ -278,7 +235,7 @@ input::placeholder {
     border-width: 2px;
     border-color: rgb(0, 0, 0);
     border-radius: 50%;
-    background-color: red;
+    background-color: rgb(0, 0, 0);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -288,13 +245,41 @@ input::placeholder {
 
 }
 
-.remove-Selection-Button:hover {
-    width: 31px;
-    height: 31px;
+.edit-Selection-Button {
+    width: 35px;
+    height: 35px;
+    outline: none;
+    cursor: pointer;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    border-width: 2px;
+    border-color: rgb(0, 0, 0);
+    border-radius: 50%;
+    background-color: rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background-color 0.3s;
+
+
 
 }
 
-.remove-image {
+
+.remove-Selection-Button:hover {
+    width: 36px;
+    height: 36px;
+
+}
+
+.edit-Selection-Button:hover {
+    width: 36px;
+    height: 36px;
+
+}
+
+.remove-image,
+.edit-image {
     width: 20px;
     height: 20px;
 
@@ -330,6 +315,117 @@ input::placeholder {
 
 
 }
+
+
+/* Editing window architecturing */
+
+.editingWindow-styling {
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 250px;
+    z-index: 2;
+    background-color: #337CFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 20px;
+    padding: 5px;
+
+}
+
+.editingWindowCloseButton-styling {
+    position: relative;
+    z-index: 3;
+    width: 37px;
+    height: 37px;
+    align-self: flex-end;
+    border-radius: 14px;
+    font-size: 25px;
+    padding-bottom: 6px;
+    font-family: sans-serif;
+    color: white;
+    background-color:  #301934;
+    font-weight: bolder;
+    cursor: pointer;
+
+}
+
+.editingWindowMessage-styling {
+
+    position: relative;
+    z-index: 3;
+    width: 500px;
+    height: 35px;
+    align-self: center;
+    font-family: 'Honk', system-ui;
+    color: red;
+    background-color: black;
+    font-weight: bolder;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    font-size: 27px;
+
+
+
+}
+
+.editingWindowInput-styling {
+    position: relative;
+    z-index: 3;
+    width: 495px;
+    height: 65px;
+    background-color: rgba(34, 36, 36, 0.87);
+    align-self: center;
+    border-radius: 5px;
+    caret-color: white;
+    color: white;
+    padding: 5px;
+    
+
+}
+
+
+
+
+
+.editingWindowOkButton-styling {
+    position: relative;
+    z-index: 3;
+    width: 65px;
+    height: 37px;
+    align-self: center;
+    border-radius: 14px;
+    font-family: sans-serif;
+    color: white;
+    background-color:  #301934;
+    font-weight: bolder;
+    cursor: pointer;
+
+}
+
+/* Can't add styling to the placeholder of input created dynamically ( as per current knowledge - 1.2.2024 */
+
+
+
+
+
+
+
+.hide-container {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.hide-container-2 {
+    display: none;
+}
+
 
 
 
