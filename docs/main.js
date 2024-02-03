@@ -81,39 +81,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 // Get the new task from the input field
                 let newEditedTask = editingWindowInput.value.trim();
-                console.log(newEditedTask);
+                let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
 
 
-                // Check if the new task is empty
                 if (newEditedTask === "") {
                     alert("Task cannot be empty. Please enter a valid task.");
                     newEditedTask = selectedTask;
                     location.reload();
-
-
                 }
-
-
-                // Check if the new task is the same as the selected task
-                if (newEditedTask === selectedTask) {
-                    // If the task is not changed, close the editing window
+                else if (newEditedTask === selectedTask) {
                     container.classList.remove("hide-container");
                     editingWindow.classList.add("hide-container-2");
                     editingWindowInput.value = "";
                     location.reload();
-
-
+                }
+                else if (tasks.includes(newEditedTask)) {
+                    alert("Task already exists. Please enter a different task.");
+                    newEditedTask = selectedTask;
+                    location.reload();
 
                 }
 
-                // Check if the new task already exists in the tasks array
-                let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-                // if (tasks.includes(newEditedTask)) {
-                //     alert("Task already exists. Please enter a different task.");
-                //     location.reload();
-                // }
-
-                // Update the tasks array without duplication
                 let indexOfSelectedTask = tasks.indexOf(selectedTask);
                 if (indexOfSelectedTask !== -1) {
                     tasks[indexOfSelectedTask] = newEditedTask;
@@ -121,18 +109,57 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 }
 
-                // Update local storage with the modified tasks array
                 localStorage.setItem('tasks', JSON.stringify(tasks));
 
-                // Update the taskArea content to the new task
                 tasksArea.textContent = newEditedTask;
 
-                // Close the editing window
                 container.classList.remove("hide-container");
                 editingWindow.classList.add("hide-container-2");
                 editingWindowInput.value = "";
 
 
+                // Check if the new task is empty
+                // if (newEditedTask === "") {
+                //     alert("Task cannot be empty. Please enter a valid task.");
+                //     newEditedTask = selectedTask;
+                //     location.reload();
+                // }
+
+                // Check if the new task is the same as the selected task
+                // if (newEditedTask === selectedTask) {
+                // If the task is not changed, close the editing window
+                //     container.classList.remove("hide-container");
+                //     editingWindow.classList.add("hide-container-2");
+                //     editingWindowInput.value = "";
+                //     location.reload();
+                // }
+
+                // Check if the new task already exists in the tasks array
+                // let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                // if (tasks.includes(newEditedTask)) {
+                //     alert("Task already exists. Please enter a different task.");
+                //     newEditedTask = selectedTask;
+                //     location.reload();
+                // }
+
+                // Update the tasks array without duplication
+                // let indexOfSelectedTask = tasks.indexOf(selectedTask);
+                // if (indexOfSelectedTask !== -1) {
+                //     tasks[indexOfSelectedTask] = newEditedTask;
+                //     location.reload();
+
+                // }
+
+                // Update local storage with the modified tasks array
+                // localStorage.setItem('tasks', JSON.stringify(tasks));
+
+                // Update the taskArea content to the new task
+                // tasksArea.textContent = newEditedTask;
+
+                // Close the editing window
+                // container.classList.remove("hide-container");
+                // editingWindow.classList.add("hide-container-2");
+                // editingWindowInput.value = "";
             });
             editingWindowCloseButton.addEventListener("click", function () {
                 container.classList.remove("hide-container")
@@ -141,9 +168,8 @@ document.addEventListener("DOMContentLoaded", function () {
             })
         })
     }
-    
+
     function taskDisplay() {
-        console.log("TaskDisplay")
         let newTask = taskInput.value;
 
         let removeSelectionButton = document.createElement("button");
