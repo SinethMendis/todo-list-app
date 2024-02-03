@@ -348,10 +348,17 @@ body {
     padding-bottom: 6px;
     font-family: sans-serif;
     color: white;
-    background-color:  #301934;
+    background-color: #301934;
     font-weight: bolder;
     cursor: pointer;
+    transition: background-color 0.2s;
 
+
+}
+
+
+.editingWindowCloseButton-styling:hover {
+    background-color: #000000;
 }
 
 .editingWindowMessage-styling {
@@ -386,7 +393,7 @@ body {
     caret-color: white;
     color: white;
     padding: 5px;
-    
+
 
 }
 
@@ -403,11 +410,19 @@ body {
     border-radius: 14px;
     font-family: sans-serif;
     color: white;
-    background-color:  #301934;
+    background-color: #301934;
     font-weight: bolder;
     cursor: pointer;
+    transition: background-color 0.2s;
+
 
 }
+
+
+.editingWindowOkButton-styling:hover {
+    background-color: #000000;
+}
+
 
 /* Can't add styling to the placeholder of input created dynamically ( as per current knowledge - 1.2.2024 */
 
