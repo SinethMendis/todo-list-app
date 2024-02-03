@@ -30,6 +30,8 @@ body {
     font-family: 'Honk', system-ui;
     font-size: 45px;
     color: rgb(255, 255, 255);
+    letter-spacing: 2px;
+
 
     /* background: linear-gradient(180deg, rgb(10, 71, 237), #000000);
     -webkit-background-clip: text;
@@ -86,6 +88,8 @@ body {
     font-size: 15px;
     /* caret-shape: block; */
     caret-color: rgb(255, 255, 255);
+    letter-spacing: 1px;
+
 
 
 
@@ -112,6 +116,8 @@ body {
     border-color: white;
     border-radius: 10px;
     height: 30px;
+    letter-spacing: 1px;
+
 
 
 
@@ -195,6 +201,8 @@ body {
     font-size: 18px;
     gap: 40px;
     transition: background-color 0.3s;
+    letter-spacing: 0.2px;
+
 
 
 }
@@ -297,6 +305,7 @@ body {
     text-align: left;
     margin-bottom: 10px;
     color: #5D3FD3;
+    letter-spacing: 2px;
 
 
 
@@ -377,6 +386,7 @@ body {
     align-items: center;
     border-radius: 15px;
     font-size: 27px;
+    letter-spacing: 2px;
 
 
 
@@ -393,6 +403,10 @@ body {
     caret-color: white;
     color: white;
     padding: 5px;
+    letter-spacing: 0.2px;
+
+
+
 
 
 }
@@ -414,6 +428,7 @@ body {
     font-weight: bolder;
     cursor: pointer;
     transition: background-color 0.2s;
+    letter-spacing: 1px;
 
 
 }
